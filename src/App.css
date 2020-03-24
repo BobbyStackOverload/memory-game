@@ -17,4 +17,7 @@
   color: #666666;
 }
 
-
+img {
+  width: 100%;
+  padding-top: 13px;
+}
