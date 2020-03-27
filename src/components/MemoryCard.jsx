@@ -2,35 +2,29 @@ import React, { Component } from "react";
 import './MemoryCard.css';
 
 class MemoryCard extends Component {
-  state = {
-    isFlipped: false
-  };
+  constructor(props) {
+    super(props);
+  }
   
-  clickHandler = () => {
-    this.setState({ 
-      isFlipped: !this.state.isFlipped 
-    });
-  };
-
- 
   render() {
-    const { isFlipped } = this.state;
-    
-    const MemoryCardInnerClass = 
-      'MemoryCardInner ' + (isFlipped === true && 'flipped');
-  
+    let MemoryCardInnerClass;
+    this.props.isFlipped === true ? MemoryCardInnerClass = "MemoryCardInner flipped" : MemoryCardInnerClass = "MemoryCardInner";
     return (
-      <div className="MemoryCard" onClick={this.clickHandler}>
+      <div className="MemoryCard" onClick={this.props.pickCard}>
         <div className={MemoryCardInnerClass}>
           <div className="MemoryCardBack">
-          <img src="https://www.digitalcrafts.com/img/digitalcrafts-logo-white-y.png" alt=""></img>
+            <img 
+            src='https://www.digitalcrafts.com/img/digitalcrafts-logo-white-y.png' 
+            alt='digital crafts logo' 
+            />
           </div>
-          <div className="MemoryCardFront"><p>∆</p>
+          <div className="MemoryCardFront">
+            {this.props.symbol}
           </div>
         </div>
-        </div>
+      </div>
     );
-  }
+  };
 }
 
 export default MemoryCard;
